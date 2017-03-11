@@ -1,0 +1,5 @@
+nx-software-center (0.8-1) unstable; urgency=medium
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- Alexis Lopez Zubieta <azubieta90@gmail.com>  Sat, 11 Mar 2017 21:36:03 +0000
