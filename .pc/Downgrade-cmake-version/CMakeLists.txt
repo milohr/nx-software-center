@@ -1,5 +1,5 @@
 project(nx_software_center)
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.7)
 cmake_policy(SET CMP0037 OLD)
 
 
