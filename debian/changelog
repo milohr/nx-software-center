@@ -1,3 +1,28 @@
+nx-software-center (0.9-1) nxos; urgency=medium
+
+  [ Alexis López Zubieta ]
+  * Set errorMessage on fail.
+  * Using card style to show snaps items
+  * Implementing ui flows using interactors
+  * Starting to implemente snaps workflow with interactors
+  * Display categories inside a card list and snaps below them
+  * Initial debian package build instructions
+  * Downgrade cmake version
+  * Downgrade cmake version
+  * Adding kauth, cmake and qtdeclarative as build depends
+  * removing ugly debian patch
+  * Adding ecm as build depends
+  * Adding libsnapd as build depends
+  * Content area item replaced with an StackView
+  * Improving snap details view look and fell
+  * Remaking home view
+  * Removing debug messages
+  * Remaking store search
+  * Rezise snap details card with the main window.
+
+
+ -- Alexis Lopez Zubieta <azubieta90@gmail.com>  Wed, 29 Mar 2017 21:22:39 -0400
+
 nx-software-center (0.8-1) unstable; urgency=medium
 
   * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
