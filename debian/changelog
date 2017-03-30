@@ -1,3 +1,21 @@
+nx-software-center (0.9-2) nxos; urgency=medium
+
+  [ Alexis Lopez Zubieta ]
+  * Initial debian package build instructions
+  * Downgrade cmake version
+  * Initial debian package build instructions
+  * Downgrade cmake version
+  * Adding kauth, cmake and qtdeclarative as build depends
+  * removing ugly debian patch
+  * Adding ecm as build depends
+  * Adding libsnapd as build depends
+
+  [ Alexis López Zubieta ]
+  * Make 0.9 release
+
+
+ -- Alexis Lopez Zubieta <azubieta90@gmail.com>  Thu, 30 Mar 2017 17:18:35 -0400
+
 nx-software-center (0.9-1) nxos; urgency=medium
 
   [ Alexis López Zubieta ]
