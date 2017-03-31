@@ -1,3 +1,11 @@
+nx-software-center (0.9-5) nxos; urgency=medium
+
+  [ Alexis López Zubieta ]
+  * [FIX] Correcting arrows icon name.
+  * Using icon names from Luv theme
+
+ -- Alexis Lopez Zubieta <azubieta90@gmail.com>  Fri, 31 Mar 2017 15:53:09 -0400
+
 nx-software-center (0.9-4) nxos; urgency=medium
 
   [ Alexis López Zubieta ]
