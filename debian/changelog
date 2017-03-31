@@ -1,3 +1,10 @@
+nx-software-center (0.9-4) nxos; urgency=medium
+
+  [ Alexis López Zubieta ]
+  * [FIX] Correcting arrows icon name.
+
+ -- Alexis Lopez Zubieta <alexis@k1>  Thu, 30 Mar 2017 23:13:53 -0400
+
 nx-software-center (0.9-3) nxos; urgency=medium
 
   [ Alexis López Zubieta ]
