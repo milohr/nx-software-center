@@ -1,3 +1,9 @@
+nx-software-center (0.9-6) nxos; urgency=medium
+
+  * Use kde theme settings. 
+
+ -- Alexis López Zubieta <azubieta90@gmail.com>  Mon, 03 Jul 2017 16:28:15 -0500
+
 nx-software-center (0.9-5) nxos; urgency=medium
 
   [ Alexis López Zubieta ]
