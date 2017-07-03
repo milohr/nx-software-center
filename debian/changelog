@@ -1,3 +1,9 @@
+nx-software-center (0.9-7) nxos; urgency=medium
+
+  * Improve install action feedback 
+
+ -- Alexis López Zubieta <azubieta90@gmail.com>  Mon, 03 Jul 2017 18:28:12 -0500
+
 nx-software-center (0.9-6) nxos; urgency=medium
 
   * Use kde theme settings. 
