@@ -1,3 +1,9 @@
+nx-software-center (0.9-9) nxos; urgency=medium
+
+  * Adding .desktop. 
+
+ -- Alexis Lopez Zubieta <azubieta90@gmail.com>  Fri, 29 Sep 2017 15:02:01 -0500
+
 nx-software-center (0.9-8) nxos; urgency=medium
 
   * Adding qml-module-snapd as runtime dependency.
