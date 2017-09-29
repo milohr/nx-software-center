@@ -2,7 +2,7 @@ Source: nx-software-center
 Section: unknown
 Priority: optional
 Maintainer: Alexis Lopez Zubieta <azubieta90@gmail.com>
-Build-Depends: debhelper (>=9), cmake (>= 3), qtdeclarative5-dev, libkf5auth-dev (>= 5.31), extra-cmake-modules (>= 5.30), libsnapd-qt-dev (>= 1.7)
+Build-Depends: debhelper (>=9), cmake (>= 3), qtdeclarative5-dev, libkf5auth-dev (>= 5.31), extra-cmake-modules (>= 5.30), libsnapd-qt-dev (>= 1.7), qml-module-snapd
 Standards-Version: 3.9.6
 Homepage: <insert the upstream URL, if relevant>
 #Vcs-Git: git://anonscm.debian.org/collab-maint/nx-software-center.git
@@ -10,6 +10,6 @@ Homepage: <insert the upstream URL, if relevant>
 
 Package: nx-software-center
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}, qml-module-snapd
 Description: <insert up to 60 chars description>
  <insert long description, indented with spaces>

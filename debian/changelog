@@ -1,3 +1,9 @@
+nx-software-center (0.9-8) nxos; urgency=medium
+
+  * Adding qml-module-snapd as runtime dependency.
+
+ -- Alexis Lopez Zubieta <azubieta90@gmail.com>  Fri, 29 Sep 2017 14:27:10 -0500
+
 nx-software-center (0.9-7) nxos; urgency=medium
 
   * Improve install action feedback 
