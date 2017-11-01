@@ -11,6 +11,7 @@ PlasmaCore.FrameSvgItem {
     signal goHome
     signal goStore
     signal goSettings
+    signal goAppImageStore
     signal storeQueryTyped(var query)
 
     imagePath: "opaque/widgets/panel-background"
@@ -47,6 +48,16 @@ PlasmaCore.FrameSvgItem {
             onClicked: {
                 goStore()
                 currentView = "store"
+            }
+        }
+
+        PlasmaComponents.ToolButton {
+            iconName: "appimage-store"
+            Layout.fillHeight: true
+            checked: currentView == "appImageStore"
+            onClicked: {
+                goAppImageStore()
+                currentView = "appImageStore"
             }
         }
 

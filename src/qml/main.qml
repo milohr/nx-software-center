@@ -24,6 +24,7 @@ ApplicationWindow {
 
         onGoHome: main.goHome()
         onGoStore: showDepartamensView()
+        onGoAppImageStore: showAppImageStore()
         onGoSettings: showSettings()
         onStoreQueryTyped: main.showSearchView(query)
     }
@@ -33,10 +34,10 @@ ApplicationWindow {
         height: statusArea.visible ? 42 : 0
     }
 
-        StackView {
-            id: content
-            anchors.fill: parent
-        }
+    StackView {
+        id: content
+        anchors.fill: parent
+    }
 
     TextConstants {
         id: textConstants
@@ -112,9 +113,29 @@ ApplicationWindow {
     }
 
     function showSearchView(query) {
-        content.replace("qrc:/SearchView.qml", StackView.Immediate)
+        if (content.currentItem.objectName != "appImageStoreView")
+            content.replace("qrc:/SearchView.qml", StackView.Immediate)
 
         content.currentItem.query(query)
+    }
+
+    function showAppImageStore() {
+        content.replace("qrc:/AppImageStoreView.qml", StackView.Immediate)
+
+        content.currentItem.query(query)
+    }
+
+    function showAppImageDetails(appImage) {
+        if (content.currentItem.objectName != "appImageDetailsView") {
+            if (content.currentItem.objectName == "placeHolderView")
+                content.replace("qrc:/AppDetailsView.qml",
+                                { app: appImage },
+                                StackView.Immediate)
+            else
+                content.push("qrc:/AppDetailsView.qml",
+                             {app: appImage},
+                             StackView.Immediate)
+        }
     }
 
     function showSettings() {
