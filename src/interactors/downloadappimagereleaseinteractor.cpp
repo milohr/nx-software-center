@@ -75,7 +75,13 @@ void DownloadAppImageReleaseInteractor::execute()
                 .arg(release->id)
                 .arg(release->arch);
 
-        QDir destination(storagePath.replace("$HOME", QDir::homePath()));
+        QString destinationPath = storagePath;
+        if (QDir::home().exists())
+            destinationPath = destinationPath.replace("$HOME", QDir::homePath());
+        else
+            destinationPath = destinationPath.replace("$HOME", "/tmp/");
+
+        QDir destination(destinationPath);
         QString targetFilePath = destination.absoluteFilePath(newFileName);
 
         destination.mkpath(storagePath);

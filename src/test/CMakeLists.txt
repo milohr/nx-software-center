@@ -101,4 +101,4 @@ set(GATEWAYS_TESTS_SOURCE
 
 add_executable(gateways_tests ${GATEWAYS_TESTS_SOURCE})
 target_link_libraries(gateways_tests Qt5::Test KF5::KIOCore)
-add_test(gateways_tests gateways_tests)
+# add_test(gateways_tests gateways_tests)
