@@ -1,3 +1,9 @@
+nx-software-center (1.0-1) nxos; urgency=medium
+
+  * Adding AppImages support. 
+
+ -- Alexis Lopez Zubieta <azubieta90@gmail.com>  Wed, 01 Nov 2017 11:06:19 -0600
+
 nx-software-center (0.9-9) nxos; urgency=medium
 
   * Adding .desktop. 
