@@ -1,13 +1,19 @@
 #ifndef INTERACTOR_H
 #define INTERACTOR_H
 
+#include <QObject>
 
-class Interactor
-{
+class Interactor : public QObject {
+  Q_OBJECT
 public:
-    Interactor();
-    virtual ~Interactor();
-    virtual void execute() = 0;
+  Interactor(QObject *parent = nullptr);
+  virtual ~Interactor();
+
+signals:
+  void complete();
+
+public slots:
+  virtual void execute() = 0;
 };
 
 #endif // INTERACTOR_H
