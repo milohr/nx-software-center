@@ -1,8 +1,8 @@
-project(nx_software_center)
-cmake_minimum_required(VERSION 3.5)
-cmake_policy(SET CMP0037 OLD)
+project(nomad_software_center)
+cmake_minimum_required(VERSION 3.2)
 
-enable_testing()
+cmake_policy(SET CMP0037 NEW)
+cmake_policy(SET CMP0063 NEW)
 
 # Enbable C++11 support
 set(CMAKE_CXX_STANDARD 14)
@@ -24,7 +24,7 @@ include(FeatureSummary)
 
 find_package(Qt5 REQUIRED COMPONENTS Qml Quick Gui Widgets Network Concurrent)
 find_package(KF5 REQUIRED COMPONENTS CoreAddons Auth KIO)
-find_package(AppImage REQUIRED)
+find_package(AppImageKit REQUIRED)
 feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
 
 # add the qml.qrc file
@@ -59,11 +59,11 @@ set (CORE_SOURCE
 
 add_library(core OBJECT ${CORE_SOURCE})
 target_compile_options(core PUBLIC -fPIC -fexceptions)
-target_include_directories(core PRIVATE
-    ${Qt5Core_INCLUDE_DIRS}
-    ${Qt5Network_INCLUDE_DIRS}
-    /usr/include/KF5/KIOCore
-    /usr/include/KF5/KCoreAddons
+target_include_directories(core
+    PRIVATE ${Qt5Core_INCLUDE_DIRS}
+    PRIVATE ${Qt5Network_INCLUDE_DIRS}
+    PRIVATE /usr/include/KF5/KIOCore
+    PRIVATE /usr/include/KF5/KCoreAddons
     )
 
 set(SOURCE
@@ -91,7 +91,7 @@ target_link_libraries(${PROJECT_NAME}
     Qt5::Concurrent
     KF5::Auth
     KF5::KIOCore
-    ${APPIMAGE_LIBRARIES}
+    libappimage
 )
 
 install(TARGETS ${PROJECT_NAME} DESTINATION bin)
@@ -99,4 +99,5 @@ install(TARGETS ${PROJECT_NAME} DESTINATION bin)
 install(DIRECTORY data/departaments_background/ DESTINATION share/${PROJECT_NAME}/departaments_background FILES_MATCHING PATTERN "*.png")
 install(FILES "org.nxos.softwarecenter.desktop" DESTINATION share/applications)
 
+# enable_testing()
 # add_subdirectory(src/test)
