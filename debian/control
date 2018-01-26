@@ -10,7 +10,8 @@ Vcs-Browser: https://github.com:nomad-desktop/nx-software-center
 
 Package: nx-software-center
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, appimaged
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Recommends: appimaged
 Description: AppImage Software Center
  Search, Install, Update and Remove AppImages in your
  system. Use it alongside appimaged.
