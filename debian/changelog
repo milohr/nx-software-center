@@ -1,3 +1,9 @@
+nx-software-center (2.1-0ubuntu1) nxos; urgency=medium
+
+  * Total backend remake.
+
+ -- Alexis Lopez Zubieta <azubieta90@gmail.com>  Fri, 26 Jan 2018 11:07:56 -0600
+
 nx-software-center (2.0-3ubuntu1) nxos; urgency=medium
 
   * Use the new AppImageKit lib
