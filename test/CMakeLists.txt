@@ -44,5 +44,5 @@ target_link_libraries(tests
     ${gtest_LIBRARIES}
     pthread # this must be last else it fails at linking
     )
-
+add_dependencies(tests gtest)
 add_test(software_center_core tests)
