@@ -23,10 +23,10 @@ Maui.ApplicationWindow {
     property var appsCache
     
     color: theme.backgroundColor
-    property alias tasksCount: tasksCount.value
+    property alias tasksCount: tasksCount.text
     
     property alias query: searchField.text
-        property string currentView: "store"
+    property string currentView: "store"
 
     signal goHome
     signal goStore
@@ -35,9 +35,9 @@ Maui.ApplicationWindow {
     signal storeQueryTyped(var query)
     
     onGoStore: main.handleGoStore()
-        onGoTasks: main.showTasksView()
-        onStoreQueryTyped: main.search(query)
-        
+    onGoTasks: main.showTasksView()
+    onStoreQueryTyped: main.search(query)
+
     function enable() {
         storeButton.enabled = true
         searchField.enabled = true
@@ -47,56 +47,56 @@ Maui.ApplicationWindow {
         storeButton.enabled = false
         searchField.enabled = false
     }
-     
-        
-        Connections {
-            target: TasksController
-            onAffectedApplicationsIdsChanged: navigationPanel.updateTaskNumberHint()
-        }
-        
-        Connections {
-            target: UpgraderController
-            onUpgradableApplicationsChanged: navigationPanel.updateTaskNumberHint()
-        }
-        
-        function updateTaskNumberHint() {
-            var total = TasksController.model.rowCount(
-            ) + UpgraderController.model.rowCount()
-            navigationPanel.tasksCount = total > 9 ? "+9" : total
-        }
+
+
+    Connections {
+        target: TasksController
+        onAffectedApplicationsIdsChanged: navigationPanel.updateTaskNumberHint()
+    }
+
+    Connections {
+        target: UpgraderController
+        onUpgradableApplicationsChanged: navigationPanel.updateTaskNumberHint()
+    }
+
+    function updateTaskNumberHint() {
+        var total = TasksController.model.rowCount(
+                    ) + UpgraderController.model.rowCount()
+        navigationPanel.tasksCount = total > 9 ? "+9" : total
+    }
     
     headBar.leftContent: [
-    
-    Maui.ToolButton {
-        id: storeButton
-        iconName: "appimage-store"
-        iconColor: currentView == "store" ? highlightColor: textColor
-        onClicked: {
-            currentView = "store"
-            goStore()
+
+        Maui.ToolButton {
+            id: storeButton
+            iconName: "appimage-store"
+            iconColor: currentView == "store" ? highlightColor: textColor
+            onClicked: {
+                currentView = "store"
+                goStore()
+            }
+        },
+
+        Maui.ToolButton {
+            id: tasksButton
+            iconName: "document-download"
+            iconColor: currentView == "tasks" ? highlightColor: textColor
+            onClicked: {
+                currentView = "tasks"
+                goTasks()
+            }
+
+            Maui.Badge {
+                id: tasksCount
+                color: "#EC407A"
+                anchors.margins: 2
+                anchors.right: parent.right
+                anchors.top: parent.top
+                height: 18
+                width: 18
+            }
         }
-    },
-    
-    Maui.ToolButton {
-        id: tasksButton
-        iconName: "document-download"
-        iconColor: currentView == "tasks" ? highlightColor: textColor
-        onClicked: {
-            currentView = "tasks"
-            goTasks()
-        }
-        
-        Parts.CounterEmblem {
-            id: tasksCount
-            
-            anchors.margins: 2
-            anchors.right: parent.right
-            anchors.top: parent.top
-            height: 18
-            width: 18
-        }
-    }       
-    
+
     ]
     
     tasksCount: "0"
@@ -117,7 +117,7 @@ Maui.ApplicationWindow {
         visible: false
     }
     
-   content: Flickable {
+    content: Flickable {
         id: scrollView
         anchors.fill: parent
         
@@ -145,19 +145,19 @@ Maui.ApplicationWindow {
                 var itemInstance = findItemByObjectName(name)
                 if (itemInstance)
                     stackView.pop(itemInstance)
-                    else
-                        stackView.push(component, {
-                            objectName: name
-                        })
-                        adjustContentHeight()
+                else
+                    stackView.push(component, {
+                                       objectName: name
+                                   })
+                adjustContentHeight()
             }
             
             function adjustContentHeight() {
                 var childrenHeight = stackView.currentItem.childrenRect.height
                 if (childrenHeight > scrollView.height)
                     stackView.height = childrenHeight
-                    else
-                        stackView.height = scrollView.height
+                else
+                    stackView.height = scrollView.height
             }
             
             Connections {
@@ -219,8 +219,8 @@ Maui.ApplicationWindow {
             } else {
                 if (UpdaterController.isReady)
                     showSearchView()
-                    else
-                        showUpdateErrorMessage()
+                else
+                    showUpdateErrorMessage()
             }
         }
     }
@@ -228,8 +228,8 @@ Maui.ApplicationWindow {
     function handleGoStore() {
         if (UpdaterController.isReady)
             showSearchView()
-            else
-                UpdaterController.update()
+        else
+            UpdaterController.update()
     }
     
     function showSearchView() {
