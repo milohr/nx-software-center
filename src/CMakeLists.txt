@@ -1,4 +1,4 @@
-find_package(Qt5 REQUIRED COMPONENTS Core Gui Qml Network XmlPatterns)
+find_package(Qt5 REQUIRED COMPONENTS Core Gui Qml Network XmlPatterns Widgets)
 
 ###
 # Core
@@ -132,6 +132,7 @@ target_link_libraries(nx_software_center
         Qt5::Qml
         Qt5::Network
         Qt5::XmlPatterns
+        Qt5::Widgets
         libappimage
         libappimageinfo)
 

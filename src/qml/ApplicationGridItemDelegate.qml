@@ -23,14 +23,14 @@ Item {
 
     height: 200
     width: 200
-
+/*
     PlasmaCore.FrameSvgItem {
         height: 180
         width: 180
         anchors.centerIn: parent
 
         imagePath: "opaque/widgets/panel-background"
-    }
+    }*/
 
     MouseArea {
         anchors.fill: parent

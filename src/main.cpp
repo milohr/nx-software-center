@@ -1,4 +1,4 @@
-#include <QGuiApplication>
+#include <QApplication>
 #include <QQmlApplicationEngine>
 #include <QNetworkAccessManager>
 #include <QIcon>
@@ -33,7 +33,7 @@ void registerQmlModules();
 void initSoftwareCenterModules(QObject *parent);
 
 int main(int argc, char *argv[]) {
-    QGuiApplication app(argc, argv);
+    QApplication app(argc, argv);
 
 #ifdef QT_DEBUG
     QQmlDebuggingEnabler enabler;

@@ -7,119 +7,188 @@ import org.kde.plasma.components 2.0 as PlasmaComponents
 import org.kde.plasma.extras 2.0 as PlasmaExtras
 
 import org.nxos.softwarecenter 1.0
-
+import org.kde.mauikit 1.0 as Maui
 import "parts" as Parts
 
-ApplicationWindow {
+Maui.ApplicationWindow {
     id: main
-
-    visible: true
-    width: 900
-    height: 700
-
+    
+    floatingBar: true
+    footBarOverlap: true
+    searchButton.visible: false
+    accentColor: "#263238"
+    highlightColor: "#26C6DA"
+    headBarBGColor: "#26C6DA"
+    headBarFGColor: altColorText
+    colorSchemeName: "nx-store"
+    
+    
     property var refreshCacheTask
     property var appsCache
-
-    color: theme.backgroundColor
-
-    header: NavigationPanel {
-        id: navigationPanel
-
-        onGoStore: main.handleGoStore()
-        onGoTasks: main.showTasksView()
-        onStoreQueryTyped: main.search(query)
-        onGoDeployed: main.showDeployedApplicationsView();
-
-        tasksCount: "0"
-
-        Connections {
-            target: TasksController
-            onAffectedApplicationsIdsChanged: navigationPanel.updateTaskNumberHint()
-        }
-
-        Connections {
-            target: UpgraderController
-            onUpgradableApplicationIdsChanged: navigationPanel.updateTaskNumberHint()
-        }
-
-        function updateTaskNumberHint() {
-            var total = TasksController.model.rowCount()
-                    + UpgraderController.upgradableApplicationIds.length
-            navigationPanel.tasksCount = total > 9 ? "+9" : total
-        }
-
-        Component.onCompleted: updateTaskNumberHint()
+    
+    property alias query: searchField.text
+    property alias tasksCount: tasksCount.text
+    
+    signal goHome
+    signal goStore
+    signal goDeployed
+    signal goTasks
+    signal goSettings
+    signal storeQueryTyped(var query)
+    
+    
+    onGoStore: main.handleGoStore()
+    onGoTasks: main.showTasksView()
+    onStoreQueryTyped: main.search(query)
+    onGoDeployed: main.showDeployedApplicationsView();
+    tasksCount: "0"
+    
+    function enable() {
+        storeButton.enabled = true
+        searchField.enabled = true
     }
-
+    
+    function disable() {
+        storeButton.enabled = false
+        searchField.enabled = false
+    }
+    
+    property string currentView: "store"
+    
+    function updateTaskNumberHint() {
+        var total = TasksController.model.rowCount()
+        + UpgraderController.upgradableApplicationIds.length
+        
+        main.tasksCount = total > 9 ? "+9" : total
+    }
+    
+    Connections {
+        target: TasksController
+        onAffectedApplicationsIdsChanged: updateTaskNumberHint()
+    }
+    
+    Connections {
+        target: UpgraderController
+        onUpgradableApplicationIdsChanged: updateTaskNumberHint()
+    }
+    
+    headBar.rightContent:  Maui.ToolButton {
+        id: deployedButton
+        iconName: "update-none"
+        tooltipText: qsTr("Deployed")
+        iconColor: currentView == "deployed" ? highlightColor: altColorText
+        onClicked: {
+            currentView = "deployed"
+            goDeployed()
+        }
+    }
+    
+    footBar.middleContent: [
+    
+    Maui.ToolButton {
+        id: storeButton
+        iconName: "appimage-store"
+        tooltipText: qsTr("Store")
+        iconColor: currentView == "store" ? highlightColor: altColorText
+        onClicked: {
+            currentView = "store"
+            goStore()
+        }
+    },
+    
+    Maui.ToolButton {
+        id: tasksButton
+        iconName: "document-download"
+        tooltipText: qsTr("Tasks")
+        iconColor: currentView == "tasks" ? highlightColor: altColorText
+        onClicked: {
+            currentView = "tasks"
+            goTasks()
+        }
+        
+        Maui.Badge {
+            id: tasksCount
+            color: "#EC407A"
+            
+            anchors.margins: 2
+            anchors.right: parent.right
+            anchors.top: parent.top
+            
+        }
+    }  ]
+    
+    headBar.middleContent: Maui.TextField {
+        id: searchField
+        borderColor: Qt.darker(headBarBGColor, 1.4)
+        bgColor: "#EFF0F1"
+        width: headBar.middleLayout.width * 0.7
+        placeholderText: "Search"
+        focus: true
+        
+        Keys.onEnterPressed: storeQueryTyped(text)
+        Keys.onReturnPressed: storeQueryTyped(text)
+    }
+    
+    
     footer: StatusArea {
         id: statusArea
         height: visible ? 42 : 0
         visible: false
     }
+    
 
-    Flickable {
-        id: scrollView
-        anchors.fill: parent
-
-        contentWidth: stackView.width
-        contentHeight: stackView.height
-
-        clip: true
-
+        
         StackView {
             id: stackView
-
+            
             clip: true
-            width: scrollView.width
-
+            anchors.fill: parent
+            
             initialItem: PlaceHolderView
-
+            
             function findItemByObjectName(name) {
                 var item = stackView.find(function (item, index) {
                     return item.objectName === name
                 })
                 return item
             }
-
+            
             function goTo(name, component) {
                 var itemInstance = findItemByObjectName(name)
                 if (itemInstance)
                     stackView.pop(itemInstance)
-                else
-                    stackView.push(component, {
-                                       objectName: name
-                                   })
-                adjustContentHeight()
+                    else
+                        stackView.push(component, {
+                            objectName: name
+                        })
+//                         adjustContentHeight()
             }
-
-            function adjustContentHeight() {
-                var childrenHeight = stackView.currentItem.childrenRect.height
-                if (childrenHeight > scrollView.height)
-                    stackView.height = childrenHeight
-                else
-                    stackView.height = scrollView.height
-            }
-
-            Connections {
-                target: stackView.currentItem
-                onChildrenRectChanged: stackView.adjustContentHeight()
-            }
-        }
-
-        ScrollBar.vertical: ScrollBar {
-        }
-    }
-
+            
+//             function adjustContentHeight() {
+//                 var childrenHeight = stackView.currentItem.childrenRect.height
+//                 if (childrenHeight > scrollView.height)
+//                     stackView.height = childrenHeight
+//                     else
+//                         stackView.height = scrollView.height
+//             }
+//             
+//             Connections {
+//                 target: stackView.currentItem
+//                 onChildrenRectChanged: stackView.adjustContentHeight()
+//             }
+        }     
+    
+    
     Parts.MessageFrame {
         id: messageBox
-
-        anchors.horizontalCenter: header.horizontalCenter
-        anchors.top: header.bottom
-
+        
+        anchors.horizontalCenter: headBar.horizontalCenter
+        anchors.top: headBar.bottom
+        
         visible: false
-
+        
         onCloseRequest: NotificationsController.hideNotification()
-
+        
         Connections {
             target: NotificationsController
             onShowNotificationRequest: {
@@ -130,56 +199,56 @@ ApplicationWindow {
             onNotificationExpired: messageBox.visible = false
         }
     }
-
+    
     TextConstants {
         id: textConstants
     }
-
+    
     function search(query) {
         SearchController.search(query)
         showSearchView()
     }
-
+    
     function showTasksView() {
         main.title = "Tasks"
         stackView.goTo("tasksView", "qrc:/TasksView.qml")
     }
-
+    
     function showDeployedApplicationsView() {
         main.title = "Deployed Applications"
         stackView.goTo("deployedApplicationsView", "qrc:/DeployedApplicationsView.qml")
     }
-
+    
     function handleUpdaterIsWorkingChanged(isWorking) {
         print("isWorking: " + UpdaterController.isWorking)
         print("isReady: " + UpdaterController.isReady)
-        if (navigationPanel.currentView == "store") {
+        if (currentView == "store") {
             if (isWorking) {
                 main.title = "Loading contents"
                 showBusyMessage("Loading store contents...")
             } else {
                 if (UpdaterController.isReady)
                     showSearchView()
-                else
-                    showUpdateErrorMessage()
+                    else
+                        showUpdateErrorMessage()
             }
         }
     }
-
+    
     function handleGoStore() {
-            showSearchView()
+        showSearchView()
     }
-
+    
     function showSearchView() {
         main.title = "Explore"
         stackView.goTo("searchView", "qrc:/SearchView.qml")
     }
-
+    
     function showApplicationView(applicationName) {
         main.title = applicationName ? applicationName : "Details"
         stackView.goTo("applicationView", "qrc:/ApplicationView.qml")
     }
-
+    
     function showBusyMessage(message) {
         stackView.goTo("placeHolderView", "qrc:/PlaceHolderView.qml")
         var item = stackView.findItemByObjectName("placeHolderView")
@@ -187,16 +256,16 @@ ApplicationWindow {
         item.iconName = ""
         item.showBusyIndicator = true
     }
-
+    
     function showUpdateErrorMessage() {
         stackView.goTo("placeHolderView", "qrc:/PlaceHolderView.qml")
         var item = stackView.findItemByObjectName("placeHolderView")
-
+        
         item.message = textConstants.fetchError
         item.iconName = "network-wireless-disconnected"
         item.showBusyIndicator = false
     }
-
+    
     Item {
         id : busyView
         anchors.fill: parent
@@ -206,14 +275,18 @@ ApplicationWindow {
             anchors.fill: parent
             color: "white"
             opacity: 0.3
-
+            
         }
-
+        
         BusyIndicator {
             anchors.centerIn: parent;
         }
     }
-
-
-    Component.onCompleted: handleGoStore()
+    
+    
+    Component.onCompleted:
+    {
+        handleGoStore()
+        updateTaskNumberHint()
+    }
 }
