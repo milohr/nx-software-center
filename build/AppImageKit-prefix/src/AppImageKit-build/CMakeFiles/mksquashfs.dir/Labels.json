@@ -1,0 +1,43 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/camilo/Coding/qml/nx-software-center/build/AppImageKit-prefix/src/AppImageKit-build/CMakeFiles/mksquashfs"
+		},
+		{
+			"file" : "/home/camilo/Coding/qml/nx-software-center/build/AppImageKit-prefix/src/AppImageKit-build/CMakeFiles/mksquashfs.rule"
+		},
+		{
+			"file" : "/home/camilo/Coding/qml/nx-software-center/build/AppImageKit-prefix/src/AppImageKit-build/CMakeFiles/mksquashfs-complete.rule"
+		},
+		{
+			"file" : "/home/camilo/Coding/qml/nx-software-center/build/AppImageKit-prefix/src/AppImageKit-build/mksquashfs-prefix/src/mksquashfs-stamp/mksquashfs-install.rule"
+		},
+		{
+			"file" : "/home/camilo/Coding/qml/nx-software-center/build/AppImageKit-prefix/src/AppImageKit-build/mksquashfs-prefix/src/mksquashfs-stamp/mksquashfs-mkdir.rule"
+		},
+		{
+			"file" : "/home/camilo/Coding/qml/nx-software-center/build/AppImageKit-prefix/src/AppImageKit-build/mksquashfs-prefix/src/mksquashfs-stamp/mksquashfs-download.rule"
+		},
+		{
+			"file" : "/home/camilo/Coding/qml/nx-software-center/build/AppImageKit-prefix/src/AppImageKit-build/mksquashfs-prefix/src/mksquashfs-stamp/mksquashfs-update.rule"
+		},
+		{
+			"file" : "/home/camilo/Coding/qml/nx-software-center/build/AppImageKit-prefix/src/AppImageKit-build/mksquashfs-prefix/src/mksquashfs-stamp/mksquashfs-patch.rule"
+		},
+		{
+			"file" : "/home/camilo/Coding/qml/nx-software-center/build/AppImageKit-prefix/src/AppImageKit-build/mksquashfs-prefix/src/mksquashfs-stamp/mksquashfs-configure.rule"
+		},
+		{
+			"file" : "/home/camilo/Coding/qml/nx-software-center/build/AppImageKit-prefix/src/AppImageKit-build/mksquashfs-prefix/src/mksquashfs-stamp/mksquashfs-build.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"mksquashfs"
+		],
+		"name" : "mksquashfs"
+	}
+}

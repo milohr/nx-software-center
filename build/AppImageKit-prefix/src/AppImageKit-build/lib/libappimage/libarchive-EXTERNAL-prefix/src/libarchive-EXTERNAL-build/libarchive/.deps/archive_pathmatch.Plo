@@ -1,0 +1,52 @@
+libarchive/archive_pathmatch.lo: \
+ /home/camilo/Coding/qml/nx-software-center/build/AppImageKit-prefix/src/AppImageKit-build/lib/libappimage/libarchive-EXTERNAL-prefix/src/libarchive-EXTERNAL/libarchive/archive_pathmatch.c \
+ /usr/include/stdc-predef.h \
+ /home/camilo/Coding/qml/nx-software-center/build/AppImageKit-prefix/src/AppImageKit-build/lib/libappimage/libarchive-EXTERNAL-prefix/src/libarchive-EXTERNAL/libarchive/archive_platform.h \
+ config.h /usr/include/x86_64-linux-gnu/sys/cdefs.h \
+ /usr/include/features.h /usr/include/x86_64-linux-gnu/gnu/stubs.h \
+ /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
+ /usr/include/x86_64-linux-gnu/bits/wordsize.h /usr/include/inttypes.h \
+ /usr/lib/gcc/x86_64-linux-gnu/5/include/stdint.h /usr/include/stdint.h \
+ /usr/include/x86_64-linux-gnu/bits/wchar.h /usr/include/string.h \
+ /usr/lib/gcc/x86_64-linux-gnu/5/include/stddef.h /usr/include/xlocale.h \
+ /usr/include/wchar.h /usr/include/stdio.h \
+ /usr/lib/gcc/x86_64-linux-gnu/5/include/stdarg.h \
+ /home/camilo/Coding/qml/nx-software-center/build/AppImageKit-prefix/src/AppImageKit-build/lib/libappimage/libarchive-EXTERNAL-prefix/src/libarchive-EXTERNAL/libarchive/archive_pathmatch.h
+
+/usr/include/stdc-predef.h:
+
+/home/camilo/Coding/qml/nx-software-center/build/AppImageKit-prefix/src/AppImageKit-build/lib/libappimage/libarchive-EXTERNAL-prefix/src/libarchive-EXTERNAL/libarchive/archive_platform.h:
+
+config.h:
+
+/usr/include/x86_64-linux-gnu/sys/cdefs.h:
+
+/usr/include/features.h:
+
+/usr/include/x86_64-linux-gnu/gnu/stubs.h:
+
+/usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
+
+/usr/include/x86_64-linux-gnu/bits/wordsize.h:
+
+/usr/include/inttypes.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/5/include/stdint.h:
+
+/usr/include/stdint.h:
+
+/usr/include/x86_64-linux-gnu/bits/wchar.h:
+
+/usr/include/string.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/5/include/stddef.h:
+
+/usr/include/xlocale.h:
+
+/usr/include/wchar.h:
+
+/usr/include/stdio.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/5/include/stdarg.h:
+
+/home/camilo/Coding/qml/nx-software-center/build/AppImageKit-prefix/src/AppImageKit-build/lib/libappimage/libarchive-EXTERNAL-prefix/src/libarchive-EXTERNAL/libarchive/archive_pathmatch.h:

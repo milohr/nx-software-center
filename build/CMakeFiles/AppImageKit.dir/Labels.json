@@ -1,0 +1,43 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/camilo/Coding/qml/nx-software-center/build/CMakeFiles/AppImageKit"
+		},
+		{
+			"file" : "/home/camilo/Coding/qml/nx-software-center/build/CMakeFiles/AppImageKit.rule"
+		},
+		{
+			"file" : "/home/camilo/Coding/qml/nx-software-center/build/CMakeFiles/AppImageKit-complete.rule"
+		},
+		{
+			"file" : "/home/camilo/Coding/qml/nx-software-center/build/AppImageKit-prefix/src/AppImageKit-stamp/AppImageKit-install.rule"
+		},
+		{
+			"file" : "/home/camilo/Coding/qml/nx-software-center/build/AppImageKit-prefix/src/AppImageKit-stamp/AppImageKit-mkdir.rule"
+		},
+		{
+			"file" : "/home/camilo/Coding/qml/nx-software-center/build/AppImageKit-prefix/src/AppImageKit-stamp/AppImageKit-download.rule"
+		},
+		{
+			"file" : "/home/camilo/Coding/qml/nx-software-center/build/AppImageKit-prefix/src/AppImageKit-stamp/AppImageKit-update.rule"
+		},
+		{
+			"file" : "/home/camilo/Coding/qml/nx-software-center/build/AppImageKit-prefix/src/AppImageKit-stamp/AppImageKit-patch.rule"
+		},
+		{
+			"file" : "/home/camilo/Coding/qml/nx-software-center/build/AppImageKit-prefix/src/AppImageKit-stamp/AppImageKit-configure.rule"
+		},
+		{
+			"file" : "/home/camilo/Coding/qml/nx-software-center/build/AppImageKit-prefix/src/AppImageKit-stamp/AppImageKit-build.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"AppImageKit"
+		],
+		"name" : "AppImageKit"
+	}
+}

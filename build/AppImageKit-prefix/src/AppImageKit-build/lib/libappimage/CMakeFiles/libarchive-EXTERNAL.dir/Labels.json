@@ -1,0 +1,43 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/camilo/Coding/qml/nx-software-center/build/AppImageKit-prefix/src/AppImageKit-build/lib/libappimage/CMakeFiles/libarchive-EXTERNAL"
+		},
+		{
+			"file" : "/home/camilo/Coding/qml/nx-software-center/build/AppImageKit-prefix/src/AppImageKit-build/lib/libappimage/CMakeFiles/libarchive-EXTERNAL.rule"
+		},
+		{
+			"file" : "/home/camilo/Coding/qml/nx-software-center/build/AppImageKit-prefix/src/AppImageKit-build/lib/libappimage/CMakeFiles/libarchive-EXTERNAL-complete.rule"
+		},
+		{
+			"file" : "/home/camilo/Coding/qml/nx-software-center/build/AppImageKit-prefix/src/AppImageKit-build/lib/libappimage/libarchive-EXTERNAL-prefix/src/libarchive-EXTERNAL-stamp/libarchive-EXTERNAL-install.rule"
+		},
+		{
+			"file" : "/home/camilo/Coding/qml/nx-software-center/build/AppImageKit-prefix/src/AppImageKit-build/lib/libappimage/libarchive-EXTERNAL-prefix/src/libarchive-EXTERNAL-stamp/libarchive-EXTERNAL-mkdir.rule"
+		},
+		{
+			"file" : "/home/camilo/Coding/qml/nx-software-center/build/AppImageKit-prefix/src/AppImageKit-build/lib/libappimage/libarchive-EXTERNAL-prefix/src/libarchive-EXTERNAL-stamp/libarchive-EXTERNAL-download.rule"
+		},
+		{
+			"file" : "/home/camilo/Coding/qml/nx-software-center/build/AppImageKit-prefix/src/AppImageKit-build/lib/libappimage/libarchive-EXTERNAL-prefix/src/libarchive-EXTERNAL-stamp/libarchive-EXTERNAL-update.rule"
+		},
+		{
+			"file" : "/home/camilo/Coding/qml/nx-software-center/build/AppImageKit-prefix/src/AppImageKit-build/lib/libappimage/libarchive-EXTERNAL-prefix/src/libarchive-EXTERNAL-stamp/libarchive-EXTERNAL-patch.rule"
+		},
+		{
+			"file" : "/home/camilo/Coding/qml/nx-software-center/build/AppImageKit-prefix/src/AppImageKit-build/lib/libappimage/libarchive-EXTERNAL-prefix/src/libarchive-EXTERNAL-stamp/libarchive-EXTERNAL-configure.rule"
+		},
+		{
+			"file" : "/home/camilo/Coding/qml/nx-software-center/build/AppImageKit-prefix/src/AppImageKit-build/lib/libappimage/libarchive-EXTERNAL-prefix/src/libarchive-EXTERNAL-stamp/libarchive-EXTERNAL-build.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"libarchive-EXTERNAL"
+		],
+		"name" : "libarchive-EXTERNAL"
+	}
+}

@@ -1,4 +1,4 @@
-#include <QGuiApplication>
+#include <QApplication>
 #include <QQmlApplicationEngine>
 #include <QNetworkAccessManager>
 #include <QIcon>
@@ -47,7 +47,7 @@ Q_DECLARE_METATYPE(UpgradeList)
 void registerMetatypes();
 
 int main(int argc, char *argv[]) {
-    QGuiApplication app(argc, argv);
+    QApplication app(argc, argv);
 
 #ifdef QT_DEBUG
     QQmlDebuggingEnabler enabler;

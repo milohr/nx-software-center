@@ -1,0 +1,14 @@
+/usr/local/lib/cmake/libappimage/libappimageConfig.cmake
+/usr/local/lib/cmake/libappimage/libappimageConfigVersion.cmake
+/usr/local/lib/cmake/libappimage/libappimageTargets.cmake
+/usr/local/lib/cmake/libappimage/libappimageTargets-noconfig.cmake
+/usr/local/lib/static/libappimage_shared.a
+/usr/local/include/appimage/appimage_shared.h
+/usr/local/lib/libappimage.so
+/usr/local/include/appimage/appimage.h
+/usr/local/lib/appimagekit/mksquashfs
+/usr/local/lib/appimagekit/runtime
+/usr/local/bin/AppRun
+/usr/local/bin/appimagetool
+/usr/local/bin/digest
+/usr/local/bin/validate

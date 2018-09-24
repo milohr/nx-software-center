@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/camilo/Coding/qml/nx-software-center/build/AppImageKit-prefix/src/AppImageKit/lib/libappimage/src/xdg-basedir/xdg-basedir.c
+xdg-basedir.h
+/home/camilo/Coding/qml/nx-software-center/build/AppImageKit-prefix/src/AppImageKit/lib/libappimage/src/xdg-basedir/xdg-basedir.h
+string.h
+-
+stdlib.h
+-
+
+/home/camilo/Coding/qml/nx-software-center/build/AppImageKit-prefix/src/AppImageKit/lib/libappimage/src/xdg-basedir/xdg-basedir.h
+

@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/camilo/Coding/qml/nx-software-center/build/AppImageKit-prefix/src/AppImageKit/src/AppRun.c
+stdio.h
+-
+stdlib.h
+-
+unistd.h
+-
+libgen.h
+-
+dirent.h
+-
+string.h
+-
+errno.h
+-
+

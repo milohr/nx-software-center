@@ -1,0 +1,43 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/camilo/Coding/qml/nx-software-center/build/test/CMakeFiles/gtest"
+		},
+		{
+			"file" : "/home/camilo/Coding/qml/nx-software-center/build/test/CMakeFiles/gtest.rule"
+		},
+		{
+			"file" : "/home/camilo/Coding/qml/nx-software-center/build/test/CMakeFiles/gtest-complete.rule"
+		},
+		{
+			"file" : "/home/camilo/Coding/qml/nx-software-center/build/test/gtest-prefix/src/gtest-stamp/gtest-install.rule"
+		},
+		{
+			"file" : "/home/camilo/Coding/qml/nx-software-center/build/test/gtest-prefix/src/gtest-stamp/gtest-mkdir.rule"
+		},
+		{
+			"file" : "/home/camilo/Coding/qml/nx-software-center/build/test/gtest-prefix/src/gtest-stamp/gtest-download.rule"
+		},
+		{
+			"file" : "/home/camilo/Coding/qml/nx-software-center/build/test/gtest-prefix/src/gtest-stamp/gtest-update.rule"
+		},
+		{
+			"file" : "/home/camilo/Coding/qml/nx-software-center/build/test/gtest-prefix/src/gtest-stamp/gtest-patch.rule"
+		},
+		{
+			"file" : "/home/camilo/Coding/qml/nx-software-center/build/test/gtest-prefix/src/gtest-stamp/gtest-configure.rule"
+		},
+		{
+			"file" : "/home/camilo/Coding/qml/nx-software-center/build/test/gtest-prefix/src/gtest-stamp/gtest-build.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"gtest"
+		],
+		"name" : "gtest"
+	}
+}
