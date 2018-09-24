@@ -1,3 +1,0 @@
-repository='external project URL'
-module='https://www.libarchive.org/downloads/libarchive-3.3.1.tar.gz'
-tag='SHA512=90702b393b6f0943f42438e277b257af45eee4fa82420431f6a4f5f48bb846f2a72c8ff084dc3ee9c87bdf8b57f4d8dddf7814870fe2604fe86c55d8d744c164'

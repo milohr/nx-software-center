@@ -1,2 +1,0 @@
-/usr/bin/ar qc libappimage_static.a  CMakeFiles/libappimage_static.dir/libappimage.c.o CMakeFiles/libappimage_static.dir/appimage_handler.c.o CMakeFiles/libappimage_static.dir/type1.c.o CMakeFiles/libappimage_static.dir/type2.c.o
-/usr/bin/ranlib libappimage_static.a

@@ -1,2 +1,0 @@
-/usr/bin/ar qc libappimage_shared.a  CMakeFiles/libappimage_shared.dir/elf.c.o CMakeFiles/libappimage_shared.dir/hexlify.c.o
-/usr/bin/ranlib libappimage_shared.a

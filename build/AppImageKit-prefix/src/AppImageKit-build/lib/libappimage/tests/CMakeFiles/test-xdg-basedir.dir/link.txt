@@ -1,1 +1,0 @@
-/usr/bin/c++     CMakeFiles/test-xdg-basedir.dir/test-xdg-basedir.cpp.o  -o test-xdg-basedir ../src/xdg-basedir/libxdg-basedir.a ../lib/gtest/googlemock/gtest/libgtest.a -lpthread 

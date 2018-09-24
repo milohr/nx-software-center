@@ -1,2 +1,0 @@
-/usr/bin/ar qc libxdg-basedir.a  CMakeFiles/xdg-basedir.dir/xdg-basedir.c.o
-/usr/bin/ranlib libxdg-basedir.a

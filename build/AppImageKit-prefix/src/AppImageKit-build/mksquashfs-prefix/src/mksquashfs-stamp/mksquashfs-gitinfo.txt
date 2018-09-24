@@ -1,3 +1,0 @@
-repository='https://github.com/plougher/squashfs-tools/'
-module=''
-tag=''
