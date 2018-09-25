@@ -1,5 +1,8 @@
 <RCC>
     <qresource prefix="/">
         <file>images/backgrounds/internet.png</file>
+        <file>images/backgrounds/banner1.png</file>
+        <file>images/backgrounds/banner2.png</file>
+        <file>images/backgrounds/banner3.png</file>
     </qresource>
 </RCC>

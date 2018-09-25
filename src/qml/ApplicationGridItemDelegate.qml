@@ -1,16 +1,16 @@
 import QtQuick 2.0
 import QtQuick.Layouts 1.3
-import QtQuick.Controls 2.3
-
+import QtQuick.Controls 2.4
+import org.kde.mauikit 1.0 as Maui
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.components 2.0 as PlasmaComponents
 
-Item {
-    property alias icon: iconImage.source
+ItemDelegate {
+    property alias iconName: iconImage.source
     property alias name: labelName.text
     property alias version: labelVersion.text
     property alias size: labelSize.text
-
+    
     property bool deployed: false
     property bool upgradable: false
     property bool hasPendingAction: false
@@ -20,108 +20,130 @@ Item {
     signal requestGet
     signal requestUpgrade
     signal requestView
+    
+   hoverEnabled: !isMobile   
+onReleased: requestView()   
 
-    height: 200
-    width: 200
-/*
-    PlasmaCore.FrameSvgItem {
-        height: 180
-        width: 180
-        anchors.centerIn: parent
-
-        imagePath: "opaque/widgets/panel-background"
-    }*/
-
-    MouseArea {
-        anchors.fill: parent
-        onReleased: requestView()
+    background: Rectangle{
+        color: hovered? altColor : "transparent"
+        border.color: Qt.darker(altColor,1.2)
+        radius: radiusV
+        opacity: hovered? 0.2 : 0
+        
     }
 
     ColumnLayout {
         id: contents
-        height: 180
-        width: 180
+        height: parent.height 
+        width: parent.width 
         anchors.centerIn: parent
 
-        Image {
-            id: iconImage
-            Layout.maximumWidth: 120
-            Layout.preferredHeight: 100
-            Layout.maximumHeight: 120
+        Item{
+            id: iconItem
+            Layout.fillWidth: true
+            Layout.maximumWidth: iconSizes.large
+            Layout.preferredHeight: iconSizes.large
+            Layout.maximumHeight: iconSizes.large
             Layout.alignment: Qt.AlignCenter
-            Layout.margins: 10
-
-            visible: source != "" && status == Image.Ready
+            Layout.margins: space.small
+            
+            Image {
+            id: iconImage         
+           anchors.centerIn: parent
+            height: iconSizes.large
+            width: height
+            sourceSize.width: width
+            sourceSize.height: height
+            smooth: true
             asynchronous: true
             cache: false
             fillMode: Image.PreserveAspectFit
+            
         }
+            visible: iconImage.source != "" && iconImage.status == Image.Ready
 
-        PlasmaCore.IconItem {
-            id: placeHolderIconImage
-            Layout.maximumWidth: 180
-            Layout.preferredHeight: 100
-            Layout.maximumHeight: 120
+        }
+        
+         Item{
+              Layout.fillWidth: true
+            Layout.maximumWidth: iconSizes.large
+            Layout.preferredHeight: iconSizes.large
+            Layout.maximumHeight: iconSizes.large
             Layout.alignment: Qt.AlignCenter
-            Layout.margins: 10
+            Layout.margins: space.small
+            
+        Maui.ToolButton {
+            id: placeHolderIconImage
+                       anchors.centerIn: parent
 
-            source: "package-x-generic"
-            visible: !iconImage.visible
+            size: iconSizes.large
+            enabled: false
+            isMask: false
+            iconName: "package-x-generic"
         }
+                    visible: !iconItem.visible
 
-        GridLayout {
-            columns: 2
-            Layout.fillWidth: true
-            Layout.alignment: Qt.AlignBottom
-            Layout.bottomMargin: 18
-            Layout.leftMargin: 12
-            Layout.rightMargin: 8
+         }
 
-            PlasmaComponents.Label {
+        Item{
+            
+            Layout.fillWidth: true       
+             Layout.fillHeight: true
+             Label {
                 id: labelName
-                Layout.fillWidth: true
-                Layout.alignment: Qt.AlignBottom
-
+                height: parent.height
+                width: parent.width
+                horizontalAlignment: Qt.AlignHCenter
+                verticalAlignment: Qt.AlignVCenter
+                color: textColor
                 elide: Text.ElideRight
 
-                font.pointSize: 9
+                font.pointSize: fontSizes.default
                 font.bold: true
             }
+        }
+       
+
+       Item{
+           
+           Layout.fillWidth: true
+                        Layout.fillHeight: true
 
             Loader {
+                visible: hovered
+                height: iconSizes.medium
+                width: height * 3
                 id: loader
-                Layout.rowSpan: 3
-                Layout.maximumWidth: 72
-                Layout.preferredHeight: 20
+                anchors.centerIn: parent
                 sourceComponent: deployed ? removeButton : getButton
             }
-
-            PlasmaComponents.Label {
+       }
+           
+            Label {
                 id: labelVersion
                 Layout.fillWidth: true
                 elide: Text.ElideRight
-
-                font.pointSize: 8
+                color: textColor
+                font.pointSize: fontSizes.small
                 visible: text
             }
 
-            PlasmaComponents.Label {
+            Label {
                 id: labelSize
                 Layout.fillWidth: true
                 elide: Text.ElideRight
-
-                font.pointSize: 8
+                color: textColor
+                font.pointSize: fontSizes.small
                 visible: text
             }
-        }
-
+        
         Component {
             id: getButton
-            PlasmaComponents.Button {
+            Maui.Button {
                 enabled: !hasPendingAction
                 text: upgradable ? i18n("Upgrade") : i18n("Get")
-                font.pointSize: 8
-
+                colorScheme.backgroundColor: infoColor
+                colorScheme.textColor: "white"
                 onClicked: {
                     if (upgradable)
                         requestUpgrade()
@@ -135,7 +157,7 @@ Item {
             id: removeButton
             RowLayout {
                 spacing: 0
-                PlasmaComponents.Button {
+                Maui.Button {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
 
@@ -143,27 +165,16 @@ Item {
                     text: i18n("Run")
 
                     onClicked: requestRun()
-                    font.pointSize: 8
                 }
 
-                PlasmaComponents.ToolButton {
+                Maui.ToolButton {
                     id: menuButton
                     Layout.maximumWidth: 20
                     Layout.fillHeight: true
                     flat: false
-
+                    size: iconSizes.small
                     enabled: !hasPendingAction
-
-                    PlasmaCore.SvgItem {
-                        anchors.fill: parent
-                        anchors.margins: 2
-
-                        elementId: "down-arrow"
-                        svg: PlasmaCore.Svg {
-                            id: svg
-                            imagePath: "widgets/arrows"
-                        }
-                    }
+                    iconName: "down-arrow"
 
                     onClicked: actionsMenu.open(0, height)
 

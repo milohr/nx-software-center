@@ -16,12 +16,13 @@ Maui.ApplicationWindow {
     floatingBar: true
     footBarOverlap: true
     searchButton.visible: false
+    altColorText : "#fff"
     accentColor: "#263238"
     highlightColor: "#26C6DA"
     headBarBGColor: "#26C6DA"
     headBarFGColor: altColorText
     colorSchemeName: "nx-store"
-    
+    headBar.colorScheme.borderColor: Qt.darker(headBarBGColor, 1.4)
     
     property var refreshCacheTask
     property var appsCache
@@ -35,8 +36,7 @@ Maui.ApplicationWindow {
     signal goTasks
     signal goSettings
     signal storeQueryTyped(var query)
-    
-    
+        
     onGoStore: main.handleGoStore()
     onGoTasks: main.showTasksView()
     onStoreQueryTyped: main.search(query)
@@ -76,12 +76,17 @@ Maui.ApplicationWindow {
         id: deployedButton
         iconName: "update-none"
         tooltipText: qsTr("Deployed")
-        iconColor: currentView == "deployed" ? highlightColor: altColorText
+        colorScheme.highlightColor: accentColor
+        iconColor: currentView == "deployed" ? colorScheme.highlightColor: altColorText
         onClicked: {
             currentView = "deployed"
             goDeployed()
         }
     }
+    
+    
+    footBar.colorScheme.backgroundColor: accentColor
+    footBar.colorScheme.textColor: altColorText
     
     footBar.middleContent: [
     
@@ -119,8 +124,8 @@ Maui.ApplicationWindow {
     
     headBar.middleContent: Maui.TextField {
         id: searchField
-        borderColor: Qt.darker(headBarBGColor, 1.4)
-        bgColor: "#EFF0F1"
+        colorScheme.borderColor: Qt.darker(headBarBGColor, 1.4)
+        colorScheme.backgroundColor: "#EFF0F1"
         width: headBar.middleLayout.width * 0.7
         placeholderText: "Search"
         focus: true
