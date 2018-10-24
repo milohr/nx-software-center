@@ -14,16 +14,16 @@ ItemDelegate {
     property bool deployed: false
     property bool upgradable: false
     property bool hasPendingAction: false
-
+    
     signal requestRun
     signal requestRemove
     signal requestGet
     signal requestUpgrade
     signal requestView
     
-   hoverEnabled: !isMobile   
-onReleased: requestView()   
-
+    hoverEnabled: !isMobile   
+    onReleased: requestView()   
+    
     background: Rectangle{
         color: hovered? altColor : "transparent"
         border.color: Qt.darker(altColor,1.2)
@@ -31,13 +31,13 @@ onReleased: requestView()
         opacity: hovered? 0.2 : 0
         
     }
-
+    
     ColumnLayout {
         id: contents
         height: parent.height 
         width: parent.width 
         anchors.centerIn: parent
-
+        
         Item{
             id: iconItem
             Layout.fillWidth: true
@@ -48,48 +48,48 @@ onReleased: requestView()
             Layout.margins: space.small
             
             Image {
-            id: iconImage         
-           anchors.centerIn: parent
-            height: iconSizes.large
-            width: height
-            sourceSize.width: width
-            sourceSize.height: height
-            smooth: true
-            asynchronous: true
-            cache: false
-            fillMode: Image.PreserveAspectFit
+                id: iconImage         
+                anchors.centerIn: parent
+                height: iconSizes.large
+                width: height
+                sourceSize.width: width
+                sourceSize.height: height
+                smooth: true
+                asynchronous: true
+                cache: false
+                fillMode: Image.PreserveAspectFit
+                
+            }
+            visible: iconImage.source != "" && iconImage.status == Image.Ready
             
         }
-            visible: iconImage.source != "" && iconImage.status == Image.Ready
-
-        }
         
-         Item{
-              Layout.fillWidth: true
+        Item{
+            Layout.fillWidth: true
             Layout.maximumWidth: iconSizes.large
             Layout.preferredHeight: iconSizes.large
             Layout.maximumHeight: iconSizes.large
             Layout.alignment: Qt.AlignCenter
             Layout.margins: space.small
             
-        Maui.ToolButton {
-            id: placeHolderIconImage
-                       anchors.centerIn: parent
-
-            size: iconSizes.large
-            enabled: false
-            isMask: false
-            iconName: "package-x-generic"
+            Maui.ToolButton {
+                id: placeHolderIconImage
+                anchors.centerIn: parent
+                
+                size: iconSizes.large
+                enabled: false
+                isMask: false
+                iconName: "package-x-generic"
+            }
+            visible: !iconItem.visible
+            
         }
-                    visible: !iconItem.visible
-
-         }
-
+        
         Item{
             
             Layout.fillWidth: true       
-             Layout.fillHeight: true
-             Label {
+            Layout.fillHeight: true
+            Label {
                 id: labelName
                 height: parent.height
                 width: parent.width
@@ -97,18 +97,40 @@ onReleased: requestView()
                 verticalAlignment: Qt.AlignVCenter
                 color: textColor
                 elide: Text.ElideRight
-
+                
                 font.pointSize: fontSizes.default
                 font.bold: true
             }
+        }        
+         
+        Label {
+            id: labelVersion
+            horizontalAlignment: Qt.AlignHCenter
+            verticalAlignment: Qt.AlignVCenter
+            Layout.fillWidth: true
+            elide: Text.ElideRight
+            color: textColor
+            font.pointSize: fontSizes.small
+            visible: text
         }
-       
-
-       Item{
+        
+        Label {
+            id: labelSize
+            Layout.fillWidth: true
+             horizontalAlignment: Qt.AlignHCenter
+                verticalAlignment: Qt.AlignVCenter
+            elide: Text.ElideRight
+            color: textColor
+            font.pointSize: fontSizes.small
+            visible: text
+        }
+        
            
-           Layout.fillWidth: true
-                        Layout.fillHeight: true
-
+        Item{
+            
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+            
             Loader {
                 visible: hovered
                 height: iconSizes.medium
@@ -117,26 +139,7 @@ onReleased: requestView()
                 anchors.centerIn: parent
                 sourceComponent: deployed ? removeButton : getButton
             }
-       }
-           
-            Label {
-                id: labelVersion
-                Layout.fillWidth: true
-                elide: Text.ElideRight
-                color: textColor
-                font.pointSize: fontSizes.small
-                visible: text
-            }
-
-            Label {
-                id: labelSize
-                Layout.fillWidth: true
-                elide: Text.ElideRight
-                color: textColor
-                font.pointSize: fontSizes.small
-                visible: text
-            }
-        
+        }
         Component {
             id: getButton
             Maui.Button {
@@ -147,12 +150,12 @@ onReleased: requestView()
                 onClicked: {
                     if (upgradable)
                         requestUpgrade()
-                    else
-                        requestGet()
+                        else
+                            requestGet()
                 }
             }
         }
-
+        
         Component {
             id: removeButton
             RowLayout {
@@ -160,13 +163,13 @@ onReleased: requestView()
                 Maui.Button {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
-
+                    
                     enabled: !hasPendingAction
                     text: i18n("Run")
-
+                    icon.name: "go-down"
                     onClicked: requestRun()
                 }
-
+                
                 Maui.ToolButton {
                     id: menuButton
                     Layout.maximumWidth: 20
@@ -174,26 +177,26 @@ onReleased: requestView()
                     flat: false
                     size: iconSizes.small
                     enabled: !hasPendingAction
-                    iconName: "down-arrow"
-
+                    iconName: "go-down"
+                    
                     onClicked: actionsMenu.open(0, height)
-
-                    Menu {
+                    
+                    Maui.Menu {
                         id: actionsMenu
-
-                        MenuItem {
+                        
+                        Maui.MenuItem {
                             text: i18n("Remove")
                             onClicked: requestRemove()
                         }
-
-                        MenuItem {
+                        
+                        Maui.MenuItem {
                             text: i18n("Upgrade")
                             onClicked: requestUpgrade()
                             enabled: upgradable
                         }
                     }
                 }
-
+                
             }
         }
     }

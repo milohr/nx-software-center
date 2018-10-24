@@ -72,11 +72,11 @@ Maui.ApplicationWindow {
         onUpgradableApplicationIdsChanged: updateTaskNumberHint()
     }
     
-    headBar.rightContent:  Maui.ToolButton {
+    headBar.rightContent: Maui.ToolButton {
         id: deployedButton
         iconName: "update-none"
         tooltipText: qsTr("Deployed")
-        colorScheme.highlightColor: accentColor
+        colorScheme.highlightColor: "#00838F"
         iconColor: currentView == "deployed" ? colorScheme.highlightColor: altColorText
         onClicked: {
             currentView = "deployed"
