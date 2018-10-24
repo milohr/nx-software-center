@@ -11,7 +11,7 @@ import org.kde.mauikit 1.0 as Maui
 import "parts" as Parts
 
 Maui.ApplicationWindow {
-    id: main
+    id: root
     
     floatingBar: true
     footBarOverlap: true
@@ -37,10 +37,10 @@ Maui.ApplicationWindow {
     signal goSettings
     signal storeQueryTyped(var query)
         
-    onGoStore: main.handleGoStore()
-    onGoTasks: main.showTasksView()
-    onStoreQueryTyped: main.search(query)
-    onGoDeployed: main.showDeployedApplicationsView();
+    onGoStore: root.handleGoStore()
+    onGoTasks: root.showTasksView()
+    onStoreQueryTyped: root.search(query)
+    onGoDeployed: root.showDeployedApplicationsView();
     tasksCount: "0"
     
     function enable() {
@@ -59,7 +59,7 @@ Maui.ApplicationWindow {
         var total = TasksController.model.rowCount()
         + UpgraderController.upgradableApplicationIds.length
         
-        main.tasksCount = total > 9 ? "+9" : total
+        root.tasksCount = total > 9 ? "+9" : total
     }
     
     Connections {
@@ -87,7 +87,6 @@ Maui.ApplicationWindow {
     
     footBar.colorScheme.backgroundColor: accentColor
     footBar.colorScheme.textColor: altColorText
-    
     footBar.middleContent: [
     
     Maui.ToolButton {
@@ -101,7 +100,9 @@ Maui.ApplicationWindow {
         }
     },
     
-    Maui.ToolButton {
+    Row
+    {
+          Maui.ToolButton {
         id: tasksButton
         iconName: "document-download"
         tooltipText: qsTr("Tasks")
@@ -109,18 +110,24 @@ Maui.ApplicationWindow {
         onClicked: {
             currentView = "tasks"
             goTasks()
-        }
-        
-        Maui.Badge {
+        }       
+    } 
+         Maui.Badge {
+            z: 999
             id: tasksCount
             color: "#EC407A"
-            
-            anchors.margins: 2
-            anchors.right: parent.right
-            anchors.top: parent.top
-            
+            size: iconSizes.tiny
+            height: iconSizes.medium
+            anchors.verticalCenter: tasksButton.verticalCenter
+//             anchors.rightMargin: 10
+//             anchors.topMargin: 5
+//             anchors.right: parent.right
+//             anchors.top: parent.top
+//             
         }
-    }  ]
+    }
+  
+    ]
     
     headBar.middleContent: Maui.TextField {
         id: searchField
@@ -215,12 +222,12 @@ Maui.ApplicationWindow {
     }
     
     function showTasksView() {
-        main.title = "Tasks"
+        root.title = "Tasks"
         stackView.goTo("tasksView", "qrc:/TasksView.qml")
     }
     
     function showDeployedApplicationsView() {
-        main.title = "Deployed Applications"
+        root.title = "Deployed Applications"
         stackView.goTo("deployedApplicationsView", "qrc:/DeployedApplicationsView.qml")
     }
     
@@ -229,7 +236,7 @@ Maui.ApplicationWindow {
         print("isReady: " + UpdaterController.isReady)
         if (currentView == "store") {
             if (isWorking) {
-                main.title = "Loading contents"
+                root.title = "Loading contents"
                 showBusyMessage("Loading store contents...")
             } else {
                 if (UpdaterController.isReady)
@@ -245,12 +252,12 @@ Maui.ApplicationWindow {
     }
     
     function showSearchView() {
-        main.title = "Explore"
+        root.title = "Explore"
         stackView.goTo("searchView", "qrc:/SearchView.qml")
     }
     
     function showApplicationView(applicationName) {
-        main.title = applicationName ? applicationName : "Details"
+        root.title = applicationName ? applicationName : "Details"
         stackView.goTo("applicationView", "qrc:/ApplicationView.qml")
     }
     

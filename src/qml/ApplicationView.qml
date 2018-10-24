@@ -5,7 +5,7 @@ import QtQuick.Controls 2.3
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.components 2.0 as PlasmaComponents
 import org.kde.plasma.extras 2.0 as PlasmaExtras
-
+import org.kde.mauikit 1.0 as Maui
 import org.nxos.softwarecenter 1.0
 
 Item {
@@ -60,37 +60,41 @@ Item {
                 visible: source != "" && status == Image.Ready
             }
 
-            PlasmaCore.IconItem {
+            Maui.ToolButton {
                 id: placeHolderIconImage
-                Layout.preferredHeight: 100
-                Layout.preferredWidth: 100
+                Layout.preferredHeight: size
+                Layout.preferredWidth: size
                 Layout.alignment: Qt.AlignCenter
-                Layout.margins: 10
-
-                source: "package-x-generic"
+                Layout.margins: space.small
+                size: iconSizes.huge
+                isMask: false
+                iconName: "package-x-generic"
                 visible: !iconImage.visible
             }
 
-            PlasmaComponents.Label {
+            Label {
                 Layout.alignment: Qt.AlignHCenter
                 text: ApplicationViewController.appName
-                font.pointSize: 18
+                font.pointSize: fontSizes.big
+                color: textColor
+                font.weight: Font.Bold
+                font.bold: true                
             }
 
-            PlasmaComponents.Label {
+            Label {
                 Layout.alignment: Qt.AlignHCenter
                 text: i18n("by ") + ApplicationViewController.appAuthor
-                font.pointSize: 16
+                font.pointSize: fontSizes.default
                 visible: ApplicationViewController.appAuthor
             }
 
-            PlasmaComponents.Label {
+           Label {
                 Layout.alignment: Qt.AlignHCenter
                 Layout.topMargin: 12
                 Layout.maximumWidth: 280
 
                 text: i18n("The application is being changed, please wait")
-                font.pointSize: 10
+                font.pointSize: fontSizes.default
                 wrapMode: Text.WordWrap
 
                 visible: ApplicationViewController.hasPendingTasks
@@ -104,12 +108,10 @@ Item {
 
                 spacing: 16
 
-                PlasmaComponents.Button {
+                Maui.Button {
                     id: getButton
                     Layout.maximumWidth: 72
                     text: i18n("Get")
-                    font.pointSize: 9
-
                     visible: !ApplicationViewController.isAppInstalled
 
                     onClicked: DeployController.deploy(
@@ -161,40 +163,42 @@ Item {
 
             spacing: 12
 
-            PlasmaComponents.Label {
+            Label {
                 Layout.fillWidth: true
                 Layout.alignment: Qt.AlignTop | Qt.AlignLeft
                 text: i18n("Information")
-                font.pointSize: 16
+                font.pointSize: fontSizes.default
+                color: textColor
             }
 
-            PlasmaComponents.Label {
+            Label {
                 Layout.fillWidth: true
                 Layout.alignment: Qt.AlignTop | Qt.AlignLeft
                 text: i18n("- Website: %1".arg(
                                ApplicationViewController.appWebsite))
-                font.pointSize: 8
-
+                font.pointSize: fontSizes.small
+                color: textColor
                 visible: ApplicationViewController.appWebsite
             }
 
-            PlasmaComponents.Label {
+            Label {
                 Layout.fillWidth: true
                 Layout.alignment: Qt.AlignTop | Qt.AlignLeft
                 text: i18n("- Version: %1".arg(
                                ApplicationViewController.appVersion))
-                font.pointSize: 8
+                font.pointSize: fontSizes.small
+                color: textColor
 
                 visible: ApplicationViewController.appVersion
             }
 
-            PlasmaComponents.Label {
+            Label {
                 Layout.fillWidth: true
                 Layout.alignment: Qt.AlignTop | Qt.AlignLeft
                 text: i18n("- Size: %1".arg(
                                ApplicationViewController.appDownloadSize))
-                font.pointSize: 8
-
+                font.pointSize: fontSizes.small
+                color: textColor
                 visible: ApplicationViewController.appDownloadSize
             }
 
@@ -203,7 +207,7 @@ Item {
                 Layout.alignment: Qt.AlignTop | Qt.AlignLeft
                 Layout.fillWidth: true
 
-                PlasmaComponents.Label {
+                Label {
                     width: appDescriptionScrollArea.width - 32
                     Layout.fillHeight: true
                     Layout.alignment: Qt.AlignHCenter
@@ -212,6 +216,8 @@ Item {
 
                     text: '<font size="2">' + ApplicationViewController.appDescription + '</font>'
                     textFormat: Text.RichText
+                    font.pointSize: fontSizes.default
+                    color: textColor
                 }
             }
         }
