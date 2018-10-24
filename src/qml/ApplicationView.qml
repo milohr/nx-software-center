@@ -112,17 +112,20 @@ Item {
                     id: getButton
                     Layout.maximumWidth: 72
                     text: i18n("Get")
+                    colorScheme.backgroundColor: infoColor
+                    colorScheme.textColor: "white"
                     visible: !ApplicationViewController.isAppInstalled
 
                     onClicked: DeployController.deploy(
                                     ApplicationViewController.appId)
                 }
 
-                PlasmaComponents.Button {
+                Maui.Button {
                     id: runButton
                     Layout.maximumWidth: 72
                     text: i18n("Run")
-                    font.pointSize: 9
+                    colorScheme.backgroundColor: suggestedColor
+                    colorScheme.textColor: "white"
 
                     visible: ApplicationViewController.isAppInstalled
 
@@ -130,11 +133,12 @@ Item {
                                     ApplicationViewController.appId)
                 }
 
-                PlasmaComponents.Button {
+                Maui.Button {
                     id: removeButton
                     Layout.maximumWidth: 72
                     text: i18n("Remove")
-                    font.pointSize: 9
+                    colorScheme.backgroundColor: dangerColor
+                    colorScheme.textColor: "white"
 
                     visible: ApplicationViewController.isAppInstalled
 
